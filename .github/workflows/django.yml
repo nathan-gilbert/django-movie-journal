@@ -3,23 +3,14 @@ name: Django CI
 on:
   push:
     branches: [ "main" ]
-  pull_request:
-    branches: [ "main" ]
 
 jobs:
   release:
      runs-on: ubuntu-latest
      steps:
-       - uses: actions/checkout@main
+       - uses: actions/checkout@v2
+       - uses: akhileshns/heroku-deploy@v3.13.15
          with:
-           fetch-depth: 0
-       - name: login
-         uses: actions/heroku@main
-         env:
-           HEROKU_API_KEY: ${{ secrets.HEROKU_API_KEY }}
-         with:
-           args: container:login
-       - name: set remote
-         run: git remote set-url origin https://heroku:${{ secrets.HEROKU_API_KEY }}@git.heroku.com/django-movie-journal.git
-       - name: push and deploy
-         run: git push origin HEAD:main -f
+           heroku_api_key: ${{ secrets.HEROKU_API_KEY }}
+           heroku_app_name: "django-movie-journal"
+           heroku_email: "nathan.gilbert@gmail.com"
