@@ -1,0 +1,15 @@
+{% extends "base.html" %}
+
+{% block title %}All Entries{% endblock %}
+
+{% block content %}
+    {% if journal_entries %}
+        <ul>
+            {% for entry in journal_entries %}
+                <li><a href="/movie-journal/{{ entry.id }}/">{{ entry.title }}</a></li>
+            {% endfor %}
+        </ul>
+    {% else %}
+        <p>No movie journals are available.</p>
+    {% endif %}
+{% endblock %}

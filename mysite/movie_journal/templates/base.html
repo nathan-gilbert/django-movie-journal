@@ -1,0 +1,15 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>{% block title %}Movie Journal Manager{% endblock %}</title>
+</head>
+
+<body>
+<div id="navigation">
+    <h4><a href="{% url 'movie_journal:index' %}">Index</a> | <a href="{% url 'movie_journal:new' %}">Create New Journal Entry</a></h4>
+</div>
+<div id="content">
+    {% block content %}{% endblock %}
+</div>
+</body>
+</html>
