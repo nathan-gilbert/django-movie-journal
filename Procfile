@@ -1,2 +1,2 @@
 web: gunicorn --pythonpath mysite mysite.wsgi:application
-release: ./manage.py migrate --no-input
+release: cd mysite && ./manage.py migrate --no-input
